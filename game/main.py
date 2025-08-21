@@ -3,7 +3,7 @@ import pygame.tests
 from pygame import mixer
 
 pygame.init()
-bullet_sound = mixer.Sound("./sound.wav")
+# bullet_sound = mixer.Sound("./sound.wav") it will burst ur eardrum while training
 screen = pygame.display.set_mode((1280,720))
 clock = pygame.time.Clock()
 
@@ -52,15 +52,15 @@ while running:
         
         if ball_posi[1]+15  >= rect_1_posi_y and ball_posi[1]+15 <= rect_1_posi_y + 100:
             velo_x = -velo_x
-            bullet_sound.play()
+            # bullet_sound.play()
             # print("ballls",ball_posi)
             print(rect_1_posi_y-ball_posi[1])
         if rect_1_posi_y >=0 and rect_1_posi_y <=50:
             velo_y = -velo_y
-            bullet_sound.play()
+            # bullet_sound.play()
         if rect_1_posi_y >= 50 and rect_1_posi_y <=100:
             velo_y = -velo_y
-            bullet_sound.play()
+            # bullet_sound.play()
         if velo_x <0:
             velo_x -= 0.7
         if velo_x > 0:
@@ -71,16 +71,16 @@ while running:
     if ball_posi[0]+15  >= 1200:
         if ball_posi[1]+15  >= rect_2_posi_y and ball_posi[1]+15 <= rect_2_posi_y + 100:
             velo_x = -velo_x
-            bullet_sound.play() 
+            # bullet_sound.play() 
             
         if rect_1_posi_y >=0 and rect_1_posi_y <=50 :
-            bullet_sound.play()
+            # bullet_sound.play()
             velo_y = -velo_y
         if rect_1_posi_y >= 50 and rect_1_posi_y <=100:
-            bullet_sound.play()
+            # bullet_sound.play()
             velo_y = -velo_y
         if ball_posi[1] + 15 >= 1280:
-            bullet_sound.play()
+            # bullet_sound.play()
             velo_y = -velo_y
         if velo_x <0:
             velo_x -= 0.1
