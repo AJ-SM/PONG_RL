@@ -7,7 +7,7 @@ from gym import spaces
 from stable_baselines3 import PPO
 
 class PongSand(gym.Env):
-    """Custom Environment FOR PONGG."""
+    """Custom Environment FOR SandBox Pong ."""
 
     def __init__(self):
         super(PongSand, self).__init__()
@@ -38,7 +38,7 @@ class PongSand(gym.Env):
         self.clock = pygame.time.Clock()
 
     def step(self, action):
-        """Update game state based on an action."""
+       
         done = False
         reward = 0  # Reward initialization
 
@@ -97,7 +97,7 @@ class PongSand(gym.Env):
 
         return np.array(self._get_obs()), reward, done, False, {}
 
-    def reset(self, seed=None, **kwargs):
+    def reset(self):
         """Reset the game state for a new episode."""
         super().reset(seed=seed, **kwargs)
         self.rect_1_posi_y = 300
@@ -106,12 +106,13 @@ class PongSand(gym.Env):
         self.score_p1 = 0
         return np.array(self._get_obs()), {}
 
-    def _get_obs(self):
+    def get_obs(self):
        return np.array([self.ball_posi[0], self.ball_posi[1], self.velo_x, self.velo_y, self.rect_1_posi_y], dtype=np.float32)
 
 
     def close(self):
-        """Close the game and quit Pygame."""
+        pass
+        
 
     def run(self):
         """Run the game loop."""
