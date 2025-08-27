@@ -115,7 +115,7 @@ class PongSand(gym.Env):
         
 
     def run(self):
-        """Run the game loop."""
+        
         model = PPO.load("E:\\Storage\\Codes\\PYTHON\\PONG\\game2\\MODELS\\PPO\\1000000.zip")
 
         obs = self.reset()  # Reset the environment once at the beginning
