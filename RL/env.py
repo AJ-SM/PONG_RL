@@ -7,7 +7,7 @@ from gym import spaces
 from stable_baselines3 import PPO
 
 class PongSand(gym.Env):
-    """Custom Environment that follows the Gymnasium interface."""
+    """Custom Environment FOR PONGG."""
 
     def __init__(self):
         super(PongSand, self).__init__()
@@ -112,4 +112,31 @@ class PongSand(gym.Env):
 
     def close(self):
         """Close the game and quit Pygame."""
+
+    def run(self):
+        """Run the game loop."""
+        model = PPO.load("E:\\Storage\\Codes\\PYTHON\\PONG\\game2\\MODELS\\PPO\\1000000.zip")
+
+        obs = self.reset()  # Reset the environment once at the beginning
+        done = False
+
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.close()
+                    return  # Exit the game loop
+
+            # Predict the action using the trained model
+            action, _ = model.predict(obs)
+
+            # Take a step in the environment
+            obs, reward, done, _ = self.step(action)
+
+            # Render the environment
+            self.render()
+
+            # Reset the environment if done
+            if done:
+                obs = self.reset()
+
         pygame.quit()
